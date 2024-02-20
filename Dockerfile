@@ -24,9 +24,6 @@ ENV IPFS_URL=$IPFS_URL
 ARG IPFS_API_KEY
 ENV IPFS_API_KEY=$IPFS_API_KEY
 
-ARG IPFS_API_SECRET
-ENV IPFS_API_SECRET=$IPFS_API_SECRET
-
 ARG PROTOCOL_STATE_CONTRACT
 ENV PROTOCOL_STATE_CONTRACT=$PROTOCOL_STATE_CONTRACT
 
@@ -44,6 +41,8 @@ COPY . .
 
 # Make the shell scripts executable
 RUN chmod +x ./snapshotter_autofill.sh ./init_docker.sh
+
+EXPOSE 8002
 
 # Start the application using PM2
 CMD bash -c "sh snapshotter_autofill.sh && sh init_docker.sh"
